@@ -1,6 +1,12 @@
-{
-  "imagenes": [
-    "imagenes/PERSONAL.JPG",
-    "imagenes/PROGRAMAP.JPG"
-  ]
-}
+[
+  {
+    "tipo": "imagen",
+    "url": "imagenes/PERSONAL.JPG",
+    "duracion": 5000
+  },
+  {
+    "tipo": "imagen",
+    "url": "imagenes/PROGRAMAP.JPG",
+    "duracion": 30000
+  }
+]
