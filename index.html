@@ -188,6 +188,23 @@ async function mostrar(){
         video.play().catch(() => {});
     }
 
+   if(item.tipo === "video"){
+
+    video.onended = () => {
+
+        actual++;
+
+        if(actual >= slides.length){
+            actual = 0;
+        }
+
+        mostrar();
+
+    };
+
+}
+else{
+
     temporizador = setTimeout(() => {
 
         actual++;
@@ -199,6 +216,8 @@ async function mostrar(){
         mostrar();
 
     }, item.duracion);
+
+}
 
 }
 
