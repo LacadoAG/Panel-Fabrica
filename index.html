@@ -5,38 +5,43 @@
 
 <meta charset="utf-8">
 
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="refresh" content="300">
+
 <style>
 
 body{
     margin:0;
-    background:black;
     overflow:hidden;
-    font-family:Arial, sans-serif;
+    background:black;
 }
 
-#contenido{
+#slide{
     width:100vw;
     height:100vh;
+    object-fit:contain;
+    display:none;
 }
 
-img, video{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:black;
+#web{
+    width:100vw;
+    height:100vh;
+    border:none;
+    display:none;
 }
 
 #reloj{
-    position:fixed;
-    top:10px;
-    right:20px;
-    color:white;
-    font-size:32px;
-    font-weight:bold;
-    background:rgba(0,0,0,0.5);
-    padding:10px 20px;
-    border-radius:10px;
+    position:absolute;
+    top:15px;
+    right:25px;
     z-index:1000;
+    color:white;
+    font-family:Arial,sans-serif;
+    font-size:36px;
+    font-weight:bold;
+    text-shadow:2px 2px 5px black;
 }
 
 </style>
@@ -47,81 +52,75 @@ img, video{
 
 <div id="reloj"></div>
 
-<div id="contenido"></div>
+<img id="slide">
+
+<iframe id="web"></iframe>
 
 <script>
 
-let slides = [];
-let actual = 0;
+let slides=[];
+let actual=0;
+let temporizador=null;
 
 function actualizarReloj(){
-
-    const ahora = new Date();
-
-    const fecha =
-        ahora.toLocaleDateString("es-ES");
-
-    const hora =
-        ahora.toLocaleTimeString("es-ES");
-
     document.getElementById("reloj").innerHTML =
-        fecha + "<br>" + hora;
+        new Date().toLocaleString("es-ES");
 }
 
 setInterval(actualizarReloj,1000);
 actualizarReloj();
 
-fetch("slides.json")
-.then(r=>r.json())
-.then(data=>{
+fetch("slides.json?t=" + Date.now())
+.then(r => r.json())
+.then(data => {
 
     slides = data;
 
-    mostrarSlide();
+    if(slides.length > 0){
+        mostrar();
+    }
 
 });
 
-function mostrarSlide(){
+function mostrar(){
 
-    let slide = slides[actual];
+    if(temporizador){
+        clearTimeout(temporizador);
+    }
 
-    let contenedor =
-        document.getElementById("contenido");
+    let item = slides[actual];
 
-    contenedor.innerHTML="";
+    let img = document.getElementById("slide");
+    let web = document.getElementById("web");
 
-    if(slide.tipo==="imagen"){
+    img.style.display="none";
+    web.style.display="none";
 
-        let img=document.createElement("img");
-        img.src=slide.url;
-        contenedor.appendChild(img);
+    if(item.tipo === "imagen"){
+
+        img.src = item.url + "?t=" + Date.now();
+        img.style.display="block";
 
     }
 
-    if(slide.tipo==="video"){
+    if(item.tipo === "web"){
 
-        let video=document.createElement("video");
-
-        video.src=slide.url;
-        video.autoplay=true;
-        video.muted=true;
-        video.loop=true;
-
-        contenedor.appendChild(video);
+        web.src = item.url;
+        web.style.display="block";
 
     }
 
-    setTimeout(()=>{
+    temporizador = setTimeout(() => {
 
         actual++;
 
-        if(actual>=slides.length){
-            actual=0;
+        if(actual >= slides.length){
+            actual = 0;
         }
 
-        mostrarSlide();
+        mostrar();
 
-    },slide.duracion);
+    }, item.duracion);
 
 }
 
