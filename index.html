@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Panel Fábrica</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:white;
+    font-family:Arial;
+}
+
+.slide{
+    display:none;
+    width:100vw;
+    height:100vh;
+}
+
+.active{
+    display:block;
+}
+
+img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+</style>
+</head>
+<body>
+
+<div class="slide active">
+    seguridad.jpg
+</div>
+
+<div class="slide">
+    <iframe
+        src="https://docs.google.com/spreadsheets/d/XXXXX/edit?usp=sharing"
+        width="100%"
+        height="100%"
+        frameborder="0">
+    </iframe>
+</div>
+
+<div class="slide">
+    <img
+
+setInterval(()=>{
+
+    slides[actual].classList.remove("active");
+
+    actual++;
+
+    if(actual>=slides.length)
+       actual=0;
+
+    slides[actual].classList.add("active");
+
+},15000);
+
+</script>
+
+</body>
+</html>
