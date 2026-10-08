@@ -28,35 +28,35 @@ body{
 
 <script>
 
-let imagenes=[];
+let slides=[];
 let actual=0;
 
 fetch("slides.json")
 .then(r=>r.json())
 .then(data=>{
 
-    imagenes=data.imagenes;
+    slides=data;
 
     mostrar();
-
-    setInterval(()=>{
-
-        actual++;
-
-        if(actual>=imagenes.length){
-            actual=0;
-        }
-
-        mostrar();
-
-    },15000);
 
 });
 
 function mostrar(){
 
-    document.getElementById("slide").src=
-        imagenes[actual];
+    document.getElementById("slide").src =
+        slides[actual].url;
+
+    setTimeout(() => {
+
+        actual++;
+
+        if(actual >= slides.length){
+            actual = 0;
+        }
+
+        mostrar();
+
+    }, slides[actual].duracion);
 
 }
 
