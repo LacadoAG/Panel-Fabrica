@@ -1,14 +1,22 @@
 [
   {
-    "tipo": "imagen",
-    "url": "imagenes/PERSONAL.JPG",
-    "duracion": 5000
-    "titulo": "Cuadrante Personal"
+    "tipo":"imagen",
+    "url":"imagenes/PERSONAL.JPG",
+    "duracion":15000
   },
   {
-    "tipo": "imagen",
-    "url": "imagenes/PROGRAMAP.JPG",
-    "duracion": 30000
-     "titulo": "Programa Produccion"
+    "tipo":"video",
+    "url":"videos/seguridad.mp4",
+    "duracion":30000
+  },
+  {
+    "tipo":"web",
+    "url":"https://docs.google.com/spreadsheets/d/TU_ID/pubhtml",
+    "duracion":30000
+  },
+  {
+    "tipo":"imagen",
+    "url":"imagenes/PROGRAMAP.JPG",
+    "duracion":15000
   }
 ]
