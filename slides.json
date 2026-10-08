@@ -6,8 +6,7 @@
   },
   {
     "tipo":"video",
-    "url":"videos/seguridad.mp4",
-    "duracion":30000
+    "url":"videos/seguridad.mp4"
   },
   {
     "tipo":"web",
