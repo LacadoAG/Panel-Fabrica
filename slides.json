@@ -3,10 +3,12 @@
     "tipo": "imagen",
     "url": "imagenes/PERSONAL.JPG",
     "duracion": 5000
+    "titulo": "Cuadrante Personal"
   },
   {
     "tipo": "imagen",
     "url": "imagenes/PROGRAMAP.JPG",
     "duracion": 30000
+     "titulo": "Programa Produccion"
   }
 ]
