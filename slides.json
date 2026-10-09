@@ -13,6 +13,11 @@
     "url":"https://docs.google.com/spreadsheets/d/1WX89eO8GjkATGHLo6ESVGE7ZiKjKUsEQ086ecWzLKCM/preview",
     "duracion":30000
   },
+    {
+    "tipo":"web",
+    "url":"http://10.133.65.51:6105/?origin=10.133.65.51%3A8802%2F%3F",
+    "duracion":30000
+  },
   {
     "tipo":"imagen",
     "url":"imagenes/PROGRAMAP.JPG",
