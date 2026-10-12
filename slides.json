@@ -23,4 +23,9 @@
     "url":"imagenes/PROGRAMAP.JPG",
     "duracion":15000
   }
+  {
+  "tipo":"pdf",
+  "url":"docs/PROGRAMAP.pdf",
+  "duracion":120000
+}
 ]
